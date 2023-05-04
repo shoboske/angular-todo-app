@@ -1,0 +1,11 @@
+<p>List of todos ftw</p>
+
+<div *ngIf="isLoading$ | async">Loading...</div>
+<div *ngIf="error$ | async as error">{{ error }}</div>
+
+<ng-container *ngIf="todos$ | async as todos">
+    <div *ngIf="!todos.length">No todos found</div>
+    <div *ngFor="let todo of todos">
+        <p>{{todo.title}} <button (click)="removeTodo(todo)">X</button> </p>
+    </div>
+</ng-container>
