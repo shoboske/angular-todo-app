@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CounterRoutingModule } from './counter-routing.module';
 import { CounterComponent } from './components/counter.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './store/reducers';
+import { reducers } from './store/counter.reducers';
 
 
 @NgModule({

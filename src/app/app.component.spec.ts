@@ -1,35 +1,36 @@
-import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store, StoreModule } from '@ngrx/store';
+import { Renderer2 } from '@angular/core';
 import { AppComponent } from './app.component';
+import { storageAction } from './store/actions';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let store: Store;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      imports: [StoreModule.forRoot({}), RouterTestingModule], // Add any required imports for your store
+      providers: [Renderer2],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'angular-todo-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-todo-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    store = TestBed.inject(Store);
+    spyOn(store, 'dispatch'); // Spy on the dispatch method of the store
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-todo-app app is running!');
+  });
+
+  it('should dispatch the storageAction when storage event is triggered', () => {
+    const key = 'testKey';
+    const event = new StorageEvent('storage', { key });
+    window.dispatchEvent(event);
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(storageAction({ payload: key }));
   });
 });

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/app-state.interface';
-import { currentNumberSelector, incrementSelector } from '../store/selectors';
-import * as CounterActions from "../store/actions";
+import { currentNumberSelector, incrementSelector } from '../store/counter.selectors';
+import * as CounterActions from "../store/counter.actions";
 
 @Component({
   selector: 'app-counter',

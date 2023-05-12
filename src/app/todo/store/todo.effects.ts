@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 
-import * as TodosActions from "./actions";
+import * as TodosActions from "./todo.actions";
 import { TodosService } from "../services/todos.service";
 
 @Injectable()

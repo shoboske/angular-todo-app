@@ -1,13 +1,13 @@
 import { createReducer, on } from "@ngrx/store";
 import { CounterStateInterface } from "../types/counter-state.interface";
-import * as CounterActions from "./actions";
+import * as CounterActions from "./counter.actions";
 
-const initialState: CounterStateInterface = {
+export const initialState: CounterStateInterface = {
     currentNumber: 0,
     increment: 1
 }
 
 export const reducers = createReducer(initialState,
-    on(CounterActions.incrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber + state.increment })),
+    on(CounterActions.incrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber })),
     on(CounterActions.decrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber - state.increment }))
 )

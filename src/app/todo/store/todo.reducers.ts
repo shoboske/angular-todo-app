@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { TodosStateInterface } from "../types/todos-state.interface";
-import * as TodoActions from "./actions";
+import * as TodoActions from "./todo.actions";
 
 export const initialState: TodosStateInterface = {
     isLoading: false,
