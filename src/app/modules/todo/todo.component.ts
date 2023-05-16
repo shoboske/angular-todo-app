@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as TodoActions from './store/todo.actions';
 import { errorSelector, isLoadingSelector, todosSelector } from './store/todo.selectors';
-import { AppStateInterface } from '../types/app-state.interface';
+import { AppStateInterface } from '../../types/app-state.interface';
 import { Observable } from 'rxjs';
 import { TodoInterface } from './types/todos-state.interface';
 

@@ -8,6 +8,6 @@ export const initialState: CounterStateInterface = {
 }
 
 export const reducers = createReducer(initialState,
-    on(CounterActions.incrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber })),
+    on(CounterActions.incrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber + state.increment})),
     on(CounterActions.decrementNumber, (state) => ({ ...state, currentNumber: state.currentNumber - state.increment }))
 )

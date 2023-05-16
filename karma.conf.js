@@ -12,6 +12,7 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
       require('karma-junit-reporter'),
+      require('karma-sabarivka-reporter'),
       require('karma-coverage')
     ],
     client: {
@@ -29,6 +30,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/angular-todo-app'),
       subdir: '.',
+      include: ['src/**/!(*.spec|*.module|environment*|main|*.effects).(ts|js)'],
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
@@ -40,7 +42,7 @@ module.exports = function (config) {
       outputFile: 'unit-test-result.xml',
       useBrowserName: false
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'junit'],
+    reporters: ['progress', 'kjhtml', 'sabarivka', 'coverage', 'junit'],
     browsers: ['Chrome'],
     restartOnFileChange: true
   });

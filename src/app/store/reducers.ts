@@ -6,7 +6,7 @@ const UPDATE_ACTION = "@ngrx/store/update-reducers";
 import { AppStateInterface } from '../types/app-state.interface';
 import { PayloadAction, storageActionType } from './actions';
 
-const mergeReducer = (state: State<AppStateInterface>, rehydratedState: State<AppStateInterface>, action: Action): State<AppStateInterface> => {
+export const mergeReducer = (state: State<AppStateInterface>, rehydratedState: State<AppStateInterface>, action: Action): State<AppStateInterface> => {
 	if ((action.type === INIT_ACTION || action.type === UPDATE_ACTION) && rehydratedState) {
 		state = { ...state, ...rehydratedState } as State<AppStateInterface>;
 	}
