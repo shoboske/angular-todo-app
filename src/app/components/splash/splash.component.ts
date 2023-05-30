@@ -21,18 +21,25 @@ readonly ANIMATION_DURATION = 1;
   ngOnInit(): void {
     // Somewhere the stop method has been invoked
     this.splashScreenStateService.subscribe(res => {
-       this.hideSplashAnimation();
+      res ? 
+      this.showSplashAnimation():
+      this.hideSplashAnimation(); 
     });
+ }
+
+ private showSplashAnimation() {
+  this.splashTransition = `opacity ${this.ANIMATION_DURATION}s`;
+  this.opacityChange = 1;
+  this.showSplash = true;
  }
 
   private hideSplashAnimation() {
     // Setting the transition
     this.splashTransition = `opacity ${this.ANIMATION_DURATION}s`;
     this.opacityChange = 0;
- 
+    
     setTimeout(() => {
-       // After the transition is ended the showSplash will be hided
-       this.showSplash = !this.showSplash;
+       this.showSplash = false;
     }, 1000);
  }
 }

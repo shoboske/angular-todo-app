@@ -16,14 +16,5 @@ export class AppComponent implements OnInit {
     this.renderer.listen('window', 'storage', event => {
       this.store.dispatch(storageAction({ payload: event.key as string }));
     });
-
-    setTimeout(() => {
-      this.splashScreenStateService.stop();
-    }, 5000);
-
-    this.activatedRoute.snapshot.data['itemsList']
-      .subscribe((res: any) => {
-        console.log({ res });
-      })
   }
 }

@@ -10,7 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { metaReducers } from './store/reducers';
 import { SplashComponent } from './components/splash/splash.component';
 import { SplashScreenStateService } from './services/splash-screen-state.service';
-import { HomepageResolver } from './resolvers/homepage.resolver';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import { HomepageResolver } from './resolvers/homepage.resolver';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), trace: true }),
     EffectsModule.forRoot([])
   ],
-  providers: [SplashScreenStateService, HomepageResolver],
+  providers: [SplashScreenStateService],
   bootstrap: [AppComponent]
 })
 

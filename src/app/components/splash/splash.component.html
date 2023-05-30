@@ -1,8 +1,12 @@
-<div *ngIf="showSplash" class="app-splash-screen" [ngStyle]="{'opacity': opacityChange, 'transition': splashTransition}">
+<div *ngIf="showSplash" class="app-splash-screen"
+   [ngStyle]="{'opacity': opacityChange, 'transition': splashTransition}">
+   <div class="app-splash-content">
+      <div>
+         <div class="loader"></div>
+         <img
+            src="data:image/png;base64,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"
+            width="150px" alt="">
+      </div>
+   </div>
 
-    <div class="app-splash-content">
-       <div data-text="Loading ..." class="loading-text">Loading ...
-       </div>
-    </div>
- 
- </div>
+</div>

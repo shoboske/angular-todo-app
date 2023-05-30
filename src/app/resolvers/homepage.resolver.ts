@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { inject } from '@angular/core';
+import { Observable, concatMap, map, of, take, timeout, timer } from 'rxjs';
 
 import { SplashScreenStateService } from '../services/splash-screen-state.service';
+import { ResolveFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { todosSelector } from '../modules/todo/store/todo.selectors';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class HomepageResolver {
-  constructor(private splashScreenStateService: SplashScreenStateService) { }
-  
-  resolve(): Promise<Observable<any>> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-         this.splashScreenStateService.stop();
-         resolve(of(['item1', 'item2']));
-      }, 5000);
-   });
-
-  }
+export const homePageResolver: ResolveFn<Observable<boolean>> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const splashScreenStateService = inject(SplashScreenStateService);
+  splashScreenStateService.show()
+  const store = inject(Store).select(todosSelector);
+  return timer(3200).pipe(
+    concatMap(() => store.pipe(
+      take(1),
+      map(() => splashScreenStateService.stop()),
+      map(() => of(true))
+    ))
+  )
 }

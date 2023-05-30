@@ -1,37 +1,35 @@
 .app-splash-screen {
-    background: #3a36d1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 1;
- }
- 
- .loading-text {
-    position: relative;
-    color: rgba(0, 0, 0, 0.3);
-    font-size: 5em;
- }
- 
- .loading-text:before {
-    content: attr(data-text);
-    position: absolute;
-    overflow: hidden;
-    max-width: 7em;
-    white-space: nowrap;
-    color: #fff;
-    animation: loading 8s linear;
- }
- 
- @keyframes loading {
-    0% {
-       max-width: 0;
-    }
- }
+   background: white;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+   opacity: 1;
+}
+
+.loader {
+   margin: auto;
+   border: 3px solid #f3f3f3;
+   border-top: 3px solid #D60078;
+   border-radius: 50%;
+   width: 30px;
+   height: 30px;
+   animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}

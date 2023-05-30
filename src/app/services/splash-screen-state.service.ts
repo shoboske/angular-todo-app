@@ -3,6 +3,10 @@ import { Subscription, Subject, Observer } from 'rxjs';
 
 @Injectable()
 export class SplashScreenStateService {
+   
+   show() {
+      this.subject.next(true);
+   }
    subject = new Subject();
 
    subscribe(onNext: Partial<Observer<unknown>> | ((value: unknown) => void) | undefined): Subscription {
