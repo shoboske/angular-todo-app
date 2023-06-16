@@ -27,7 +27,7 @@ describe('CounterComponent', () => {
     component = counterComponentDriver.componentInstance;
     counterComponentDriver.detectChanges();
 
-    store = counterComponentDriver.injector.get(MockStore)
+    store = counterComponentDriver.injector.inject(MockStore)
   });
 
   it('should create', () => {
@@ -37,7 +37,7 @@ describe('CounterComponent', () => {
   it('should increment number', () => {
     spyOn(store, 'dispatch');
     component.increment();
-    expect(store.dispatch).toHaveBeenCalledWith(CounterActions.incrementNumber());
+    expect(store.dispatch).toHaveBeenCalledOnceWith(CounterActions.incrementNumber());
   });
 
   it('should decrement number', () => {

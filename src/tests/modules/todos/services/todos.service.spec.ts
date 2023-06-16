@@ -1,9 +1,9 @@
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 
-import { TodosService } from './todos.service';
+import { TodosService } from 'src/app/modules/todo/services/todos.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TodoInterface } from '../types/todos-state.interface';
+import { TodoInterface } from 'src/app/modules/todo/types/todos-state.interface';
 
 describe('TodosService', () => {
   let service: TodosService;
@@ -35,12 +35,7 @@ describe('TodosService', () => {
 
     const req = httpTestingController.expectOne('https://jsonplaceholder.typicode.com/users/1/todos');
     expect(req.request.method).toBe('GET');
+    
     req.flush(mockTodos);
-
-    // Simulate passage of time
-    tick(2000);
-
-    // Verify that the service has completed its delay
-    expect().nothing();
   }));
 });

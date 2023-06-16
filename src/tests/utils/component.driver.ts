@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser'
 type PublicPart<T> = { [P in keyof T]: T[P] }
 
 export class ComponentDriver<T = any> implements PublicPart<ComponentFixture<T>> {
-  injector: { get(token: any, notFoundValue?: any): any }
+  injector: { inject(token: any, notFoundValue?: any): any }
 
   // ComponentFixture implementation
   componentRef = this.fixture.componentRef
@@ -38,7 +38,7 @@ export class ComponentDriver<T = any> implements PublicPart<ComponentFixture<T>>
   }
 
   constructor(private fixture: ComponentFixture<T>, public TestBed: TestBedStatic) {
-    this.injector = { get: TestBed.get }
+    this.injector = { inject: TestBed.inject }
   }
 
   protected querySelector<U = HTMLElement>(selector: string): U {
