@@ -30,7 +30,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/angular-todo-app'),
       subdir: '.',
-      include: ['src/**/!(*.spec|*.module|environment*|main|*.effects).(ts|js)'],
+      include: ['src/app/**/!(*.spec|*.module|environment*|main|*.effects).(ts|js)'],
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },

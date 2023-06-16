@@ -4,6 +4,8 @@ import { Store, StoreModule } from '@ngrx/store';
 import { Renderer2 } from '@angular/core';
 import { AppComponent } from './app.component';
 import { storageAction } from './store/actions';
+import { SplashScreenStateService } from './services/splash-screen-state.service';
+import { SplashComponent } from './components/splash/splash.component';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -12,9 +14,9 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, SplashComponent],
       imports: [StoreModule.forRoot({}), RouterTestingModule], // Add any required imports for your store
-      providers: [Renderer2],
+      providers: [Renderer2, SplashScreenStateService],
     }).compileComponents();
   });
 

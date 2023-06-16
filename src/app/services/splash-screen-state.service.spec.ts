@@ -6,7 +6,9 @@ describe('SplashScreenStateService', () => {
   let service: SplashScreenStateService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [SplashScreenStateService]
+    });
     service = TestBed.inject(SplashScreenStateService);
   });
 
